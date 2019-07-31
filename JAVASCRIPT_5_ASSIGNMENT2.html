@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <meta charset ="UTf-8">
+        <meta name="viewport" width="device-width initial-scale=1.0">
+        <title>JavaScript Getters And Setters</title>
+    </head>
+    <body>
+        <script>
+            class Airplane{
+                constructor(name,occupancy,speed){
+                    this.name = name;
+                    this.occupancy = occupancy;
+                    this.speed = speed;
+                    }
+                
+                get Name(){
+                    return this.name;
+                }
+
+                set Name(value){
+                    if(value == undefined || value == ''){
+                        throw new Error('Name cannot be blank');
+                    }
+                    this.name = value;
+                }
+
+                get Occupancy(){
+                    return this.occupancy;
+                }
+
+                set Occupancy(value){
+                    if(value == undefined || value == ''){
+                        throw new error('Occupancy cannot be empty');
+                    }
+
+                    if(value < 0 && value > 180){
+                        throw new error('Occupancy cannot be negative and greater than 180');
+                    }
+
+                    this.occupancy = value;
+                }
+
+                get Speed(){
+                    return this.speed;
+                }
+
+                set Speed(value){
+                    if(value == undefined || value == ''){
+                        throw new error('Speed cannot be empty');
+                    }
+
+                    if(value < 0 && value > 900){
+                        throw new error('Speed cannot be negative and greater than 900');
+                    }
+
+                    this.speed = value;
+                }
+
+                status(){
+                    console.log('"Airplane : ' + this.name + ' with ' + this.occupancy +' occupancy,' 
+                                +' is moving at ' + this.speed + 'km/hr"');
+                }
+
+                increaseSpeed(num){
+                    this.speed += num;
+                }
+
+                decreaseSpeed(val){
+                    this.speed -= num;
+                }                
+            }
+
+            //Initializing 3 airplane objects
+            var planeObj1 = new Airplane('Boeing777',170,700);
+            var planeObj2 = new Airplane('MIG-21',5,800);
+            var planeObj3 = new Airplane('INS-21',100,750);
+
+            //Calling print methods of all 3 objects
+            planeObj1.status();
+            planeObj2.status();
+            planeObj3.status();
+            console.log('--------------------------------------------------');
+
+            //Increase speed of airplane objects by 200
+            planeObj1.increaseSpeed(200);
+            planeObj2.increaseSpeed(200);
+            planeObj3.increaseSpeed(200);
+
+            //Calling print methods of all 3 objects
+            planeObj1.status();
+            planeObj2.status();
+            planeObj3.status();
+
+        </script>
+    </body>
+</html>
